@@ -3,26 +3,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.yogaapp.FirstFragment"
+        android:id="@+id/HomeFragment"
+        android:name="com.example.yogaapp.HomeFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_HomeFragment_to_FlowsFragment"
+            app:destination="@id/FlowsFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_posesFragment"
+            app:destination="@id/posesFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_levelsFragment"
+            app:destination="@id/levelsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.yogaapp.SecondFragment"
+        android:id="@+id/FlowsFragment"
+        android:name="com.example.yogaapp.FlowsFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_flows">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/HomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.yogaapp.CategoriesFragment"
+        android:label="fragment_categories_list"
+        tools:layout="@layout/fragment_categories_list" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_posesFragment"
+            app:destination="@id/posesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/posesFragment"
+        android:name="com.example.yogaapp.PosesFragment"
+        android:label="fragment_poses_list"
+        tools:layout="@layout/fragment_poses_list" >
+        <action
+            android:id="@+id/action_posesFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelsFragment"
+        android:name="com.example.yogaapp.LevelsFragment"
+        android:label="fragment_levels_list"
+        tools:layout="@layout/fragment_levels_list" >
+        <action
+            android:id="@+id/action_levelsFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_levelsFragment_to_posesFragment"
+            app:destination="@id/posesFragment" />
+        <action
+            android:id="@+id/action_levelsFragment_self"
+            app:destination="@id/levelsFragment" />
     </fragment>
 </navigation>
