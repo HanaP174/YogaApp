@@ -13,4 +13,7 @@
     <string name="poses">Poses</string>
     <string name="your_flows">Your Flows</string>
     <string name="levels">Levels</string>
+    <string name="category_image">category image</string>
+    <string name="description">Description:</string>
+    <string name="benefit">Benefit:</string>
 </resources>
