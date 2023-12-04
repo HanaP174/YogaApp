@@ -3,7 +3,8 @@ package com.example.yogaapp.model
 data class Category (
     val id: Int,
     val name: String,
-    val description: String
+    val description: String,
+    val svg: String
 )
 
 data class Pose (
