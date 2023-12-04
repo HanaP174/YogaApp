@@ -1,26 +1,25 @@
 package com.example.yogaapp
 
 import android.util.Log
-import android.util.Log.INFO
-import android.view.View
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.findNavController
 import com.example.yogaapp.model.Category
 import com.example.yogaapp.model.CategoryResponse
 import com.example.yogaapp.model.Pose
 import com.example.yogaapp.model.PoseResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.math.log
 import kotlin.random.Random
 
 class YogaViewModel (private val repository: Repository) : ViewModel() {
 
+    val selectedCategory = MutableLiveData<Int>()
+
     private var _categories: MutableList<Category> = mutableListOf()
     val categories: List<Category> = _categories
 
-    private var _poses: MutableList<Pose> = mutableListOf();
+    private var _poses: MutableList<Pose> = mutableListOf()
     val poses: List<Pose> = _poses
 
     // this is object for calling api only once and distribute it to custom objects
@@ -61,7 +60,13 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
 
     private fun mapPoses() {
         val posesResponse: List<PoseResponse> = _asanasResponse.flatMap { it.poses }
-        posesResponse.forEach { _poses.add(createPose(it)) }
+        posesResponse.forEach {
+            val pose: Pose = createPose(it)
+            if (!_poses.contains(pose)) {
+                Log.v("view mode", "pose: " + pose.englishName + " added")
+                _poses.add(pose)
+            }
+        }
     }
 
     private fun createPose(poseResponse: PoseResponse): Pose {

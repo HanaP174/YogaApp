@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 
 /**
  * A fragment representing a list of Items.
@@ -24,7 +25,10 @@ class CategoriesFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                adapter = MyCategoryRecyclerViewAdapter(viewModel.categories, this)
+                adapter = MyCategoryRecyclerViewAdapter(viewModel.categories, this) { categoryId ->
+                    viewModel.selectedCategory.value = categoryId
+                    findNavController().navigate(R.id.action_categoriesFragment_to_posesFragment)
+                }
             }
         }
         return view

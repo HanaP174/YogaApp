@@ -3,46 +3,41 @@ package com.example.yogaapp
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 
-import com.example.yogaapp.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.yogaapp.databinding.FragmentPosesBinding
+import com.example.yogaapp.databinding.PosesBinding
+import com.example.yogaapp.model.Pose
+import com.example.yogaapp.service.SvgLoaderService
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyPoseRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val poses: List<Pose>,
+    recyclerView: RecyclerView
 ) : RecyclerView.Adapter<MyPoseRecyclerViewAdapter.ViewHolder>() {
 
+    private val svgLoaderService = SvgLoaderService(recyclerView.context)
+
+    inner class ViewHolder(binding: PosesBinding) : RecyclerView.ViewHolder(binding.root) {
+        val poseName: TextView = binding.poseName
+        val poseDescription: TextView = binding.poseDescriptionText
+        val poseBenefit: TextView = binding.poseBenefitText
+        val svg: ImageView = binding.poseIcon
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        return ViewHolder(
-            FragmentPosesBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-
+        val binding = PosesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-//        holder.idView.text = item.id
-//        holder.contentView.text = item.content
+        val pose = poses[position]
+        holder.poseName.text = pose.englishName
+        holder.poseDescription.text = pose.description
+        holder.poseBenefit.text = pose.description
+
+        svgLoaderService.loadSvgImage(pose.svg, holder.svg)
     }
 
-    override fun getItemCount(): Int = values.size
-
-    inner class ViewHolder(binding: FragmentPosesBinding) : RecyclerView.ViewHolder(binding.root) {
-//        val idView: TextView = binding.itemNumber
-//        val contentView: TextView = binding.content
-
-        override fun toString(): String {
-            return ""
-//            return super.toString() + " '" + contentView.text + "'"
-        }
-    }
+    override fun getItemCount(): Int = poses.size
 
 }
