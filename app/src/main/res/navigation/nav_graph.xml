@@ -8,20 +8,20 @@
     <fragment
         android:id="@+id/HomeFragment"
         android:name="com.example.yogaapp.HomeFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_HomeFragment_to_FlowsFragment"
             app:destination="@id/FlowsFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
         <action
             android:id="@+id/action_HomeFragment_to_posesFragment"
             app:destination="@id/posesFragment" />
         <action
             android:id="@+id/action_HomeFragment_to_levelsFragment"
             app:destination="@id/levelsFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/FlowsFragment"

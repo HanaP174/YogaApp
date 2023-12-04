@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.yogaapp.databinding.FragmentHomeBinding
 
 /**
@@ -31,10 +32,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.categoryCard.setOnClickListener {
+            // Navigate to AnotherFragment using the action
+            findNavController().navigate(R.id.action_HomeFragment_to_categoriesFragment)
+        }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }
