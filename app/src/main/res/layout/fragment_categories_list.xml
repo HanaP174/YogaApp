@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
     tools:context=".CategoriesFragment"
-    tools:listitem="@layout/fragment_categories"
+    tools:listitem="@layout/categories"
     android:background="#FFDBD6"/>

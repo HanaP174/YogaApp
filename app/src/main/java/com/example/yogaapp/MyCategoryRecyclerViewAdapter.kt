@@ -2,50 +2,41 @@ package com.example.yogaapp
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.example.yogaapp.databinding.CategoriesBinding
 
-import com.example.yogaapp.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.yogaapp.databinding.FragmentCategoriesBinding
+import com.example.yogaapp.model.Category
+import com.example.yogaapp.service.SvgLoaderService
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyCategoryRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val categories: List<Category>,
+    context: RecyclerView
 ) : RecyclerView.Adapter<MyCategoryRecyclerViewAdapter.ViewHolder>() {
+
+    private val svgLoaderService = SvgLoaderService(context.context)
+
+    inner class ViewHolder(binding: CategoriesBinding) : RecyclerView.ViewHolder(binding.root) {
+        val categoryName: TextView = binding.categoryName
+        val categoryDescription: TextView = binding.categoryDescriptionText
+        val imageView: ImageView = binding.categoryIcon
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        return ViewHolder(
-            FragmentCategoriesBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-
+        val binding = CategoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-//        holder.idView.text = item.id
-//        holder.contentView.text = item.content
+        val category = categories[position]
+        holder.categoryName.text = category.name
+        holder.categoryDescription.text = category.description
+
+        svgLoaderService.loadSvgImage(category.svg, holder.imageView)
     }
 
-    override fun getItemCount(): Int = values.size
-
-    inner class ViewHolder(binding: FragmentCategoriesBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-//        val idView: TextView = binding.itemNumber
-//        val contentView: TextView = binding.content
-
-        override fun toString(): String {
-            return ""
-//            return super.toString() + " '" + contentView.text + "'"
-        }
-    }
+    override fun getItemCount(): Int = categories.size
 
 }

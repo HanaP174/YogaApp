@@ -2,7 +2,7 @@
     <string name="app_name">YogaApp</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+    <string name="home_fragment_label">Home Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -14,6 +14,7 @@
     <string name="your_flows">Your Flows</string>
     <string name="levels">Levels</string>
     <string name="category_image">category image</string>
-    <string name="description">Description:</string>
+    <string name="description">Description: </string>
     <string name="benefit">Benefit:</string>
+    <string name="category_icon">category icon</string>
 </resources>
