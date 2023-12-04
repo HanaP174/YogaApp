@@ -12,10 +12,10 @@ import com.example.yogaapp.service.SvgLoaderService
 
 class MyCategoryRecyclerViewAdapter(
     private val categories: List<Category>,
-    context: RecyclerView
+    recyclerView: RecyclerView
 ) : RecyclerView.Adapter<MyCategoryRecyclerViewAdapter.ViewHolder>() {
 
-    private val svgLoaderService = SvgLoaderService(context.context)
+    private val svgLoaderService = SvgLoaderService(recyclerView.context)
 
     inner class ViewHolder(binding: CategoriesBinding) : RecyclerView.ViewHolder(binding.root) {
         val categoryName: TextView = binding.categoryName
