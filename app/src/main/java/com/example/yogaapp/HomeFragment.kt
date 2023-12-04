@@ -37,6 +37,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_HomeFragment_to_categoriesFragment)
         }
 
+        binding.poseCard.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_posesFragment)
+        }
+
     }
 
     override fun onDestroyView() {
