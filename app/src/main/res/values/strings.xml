@@ -17,4 +17,8 @@
     <string name="description">Description: </string>
     <string name="benefit">Benefit:</string>
     <string name="category_icon">category icon</string>
+    <string name="level_image">level image</string>
+    <string name="beginner">Beginner</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="expert">Expert</string>
 </resources>

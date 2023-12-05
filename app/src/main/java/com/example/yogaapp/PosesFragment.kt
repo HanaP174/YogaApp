@@ -1,6 +1,7 @@
 package com.example.yogaapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.example.yogaapp.model.Pose
 class PosesFragment : Fragment() {
 
     private val viewModel: YogaViewModel by activityViewModels()
+    private var levelId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +27,11 @@ class PosesFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                val poses = filterPosesByCategoryId()
+                val poses = if (levelId != 0) {
+                    filterPosesByLevelId()
+                } else {
+                    filterPosesByCategoryId()
+                }
                 adapter = MyPoseRecyclerViewAdapter(poses, this)
             }
         }
@@ -40,5 +46,23 @@ class PosesFragment : Fragment() {
             return poses
         }
         return viewModel.poses
+    }
+
+    private fun filterPosesByLevelId(): List<Pose> {
+        return viewModel.poses
+            .filter { pose -> pose.levelId == levelId }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            levelId = it.getInt(LEVEL)
+            Log.v("poses fragment", "level assigned $levelId")
+        }
+    }
+
+    companion object {
+        const val LEVEL = "level"
     }
 }

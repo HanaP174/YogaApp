@@ -8,4 +8,5 @@
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
     tools:context=".PosesFragment"
-    tools:listitem="@layout/fragment_poses" />
+    tools:listitem="@layout/poses"
+    android:background="#FFDBD6"/>

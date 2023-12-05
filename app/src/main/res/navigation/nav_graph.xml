@@ -54,22 +54,19 @@
             android:id="@+id/action_posesFragment_to_HomeFragment"
             app:destination="@id/HomeFragment" />
         <argument
-            android:name="categoryId"
+            android:name="level"
             app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/levelsFragment"
         android:name="com.example.yogaapp.LevelsFragment"
-        android:label="fragment_levels_list"
-        tools:layout="@layout/fragment_levels_list" >
+        android:label="fragment_levels"
+        tools:layout="@layout/fragment_levels">
         <action
             android:id="@+id/action_levelsFragment_to_HomeFragment"
             app:destination="@id/HomeFragment" />
         <action
             android:id="@+id/action_levelsFragment_to_posesFragment"
             app:destination="@id/posesFragment" />
-        <action
-            android:id="@+id/action_levelsFragment_self"
-            app:destination="@id/levelsFragment" />
     </fragment>
 </navigation>

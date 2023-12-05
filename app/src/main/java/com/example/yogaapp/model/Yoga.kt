@@ -10,6 +10,7 @@ data class Category (
 data class Pose (
     val id: Int,
     val categoryId: Int,
+    var levelId: Int,
     val englishName: String,
     val originalName: String,
     val description: String,
@@ -39,4 +40,10 @@ data class PoseResponse (
     val pose_description: String,
     val pose_benefits: String,
     val url_svg: String
+)
+
+data class LevelResponse (
+    val id: Int,
+    val difficulty_level: String,
+    val poses: List<PoseResponse>
 )
