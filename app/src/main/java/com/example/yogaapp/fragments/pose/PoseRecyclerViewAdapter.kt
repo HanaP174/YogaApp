@@ -33,7 +33,7 @@ class PoseRecyclerViewAdapter(
         val pose = poses[position]
         holder.poseName.text = pose.englishName
         holder.poseDescription.text = pose.description
-        holder.poseBenefit.text = pose.description
+        holder.poseBenefit.text = pose.benefit
 
         svgLoaderService.loadSvgImage(pose.svg, holder.svg)
     }

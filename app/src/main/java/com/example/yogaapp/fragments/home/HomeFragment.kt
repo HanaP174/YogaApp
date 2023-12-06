@@ -46,6 +46,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_HomeFragment_to_levelsFragment)
         }
 
+        binding.flowsCard.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_FlowsFragment)
+        }
+
     }
 
     override fun onDestroyView() {

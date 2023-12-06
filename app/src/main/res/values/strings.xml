@@ -21,4 +21,6 @@
     <string name="beginner">Beginner</string>
     <string name="intermediate">Intermediate</string>
     <string name="expert">Expert</string>
+    <string name="duration">Duration:</string>
+    <string name="number_of_poses">Number of poses:</string>
 </resources>

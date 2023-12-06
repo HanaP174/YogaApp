@@ -21,6 +21,8 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
     private var _asanasResponseByCategory: List<CategoryResponse> = emptyList()
     private lateinit var _asanasResponseByLevel: LevelResponse
 
+    var flows: MutableList<Flow> = mutableListOf()
+
     fun getCategories() {
         if (_asanasResponseByCategory.isEmpty() || _categories.isEmpty()) {
             // first api call
@@ -42,6 +44,7 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
                 if (result is List<CategoryResponse>) {
                     _asanasResponseByCategory = result
                     mapPoses()
+                    mockFlow()
                 }
             }
         }
@@ -57,6 +60,11 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
                 }
             }
         }
+    }
+
+    fun mockFlow() {
+        val flowPoses =  poses.subList(0, 2).map{FlowPose(0, 5, it)}
+        flows.add(Flow(1, "After work yoga", flowPoses))
     }
 
     private fun mapCategories() {

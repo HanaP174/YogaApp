@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/FlowsFragment"
         android:name="com.example.yogaapp.fragments.flows.FlowsFragment"
-        tools:layout="@layout/fragment_flows">
+        tools:layout="@layout/fragment_flows_list">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"

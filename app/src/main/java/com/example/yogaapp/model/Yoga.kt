@@ -18,7 +18,7 @@ data class Pose (
     val svg: String
 )
 
-data class YogaFlowPose (
+data class FlowPose (
     var order: Int,
     var time: Int,
     var pose: Pose
@@ -46,4 +46,11 @@ data class LevelResponse (
     val id: Int,
     val difficulty_level: String,
     val poses: List<PoseResponse>
+)
+
+data class Flow (
+    var id: Int,
+    var name: String,
+    var poses: List<FlowPose>,
+    var numberOfPoses: Int = poses.size
 )
