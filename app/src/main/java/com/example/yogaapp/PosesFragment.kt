@@ -16,7 +16,8 @@ import com.example.yogaapp.model.Pose
 class PosesFragment : Fragment() {
 
     private val viewModel: YogaViewModel by activityViewModels()
-    private var levelId: Int = 0
+    private var levelId: Int = -1
+    private var categoryId: Int = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,25 +28,26 @@ class PosesFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                val poses = if (levelId != 0) {
-                    filterPosesByLevelId()
-                } else {
-                    filterPosesByCategoryId()
-                }
+                val poses = getPoses()
                 adapter = MyPoseRecyclerViewAdapter(poses, this)
             }
         }
         return view
     }
 
-    private fun filterPosesByCategoryId(): List<Pose> {
-        if (viewModel.selectedCategory.value != null) {
-            val poses = viewModel.poses
-                .filter { pose -> pose.categoryId == viewModel.selectedCategory.value}
-            viewModel.selectedCategory.value = null
-            return poses
+    private fun getPoses(): List<Pose> {
+        return if (levelId != -1) {
+            filterPosesByLevelId()
+        } else if (categoryId != -1) {
+            filterPosesByCategoryId()
+        } else {
+            viewModel.poses
         }
+    }
+
+    private fun filterPosesByCategoryId(): List<Pose> {
         return viewModel.poses
+            .filter { pose -> pose.categoryId == categoryId}
     }
 
     private fun filterPosesByLevelId(): List<Pose> {
@@ -59,10 +61,14 @@ class PosesFragment : Fragment() {
         arguments?.let {
             levelId = it.getInt(LEVEL)
             Log.v("poses fragment", "level assigned $levelId")
+            categoryId = it.getInt(CATEGORY)
+            Log.v("poses fragment", "category assigned $categoryId")
+
         }
     }
 
     companion object {
         const val LEVEL = "level"
+        const val CATEGORY = "category"
     }
 }

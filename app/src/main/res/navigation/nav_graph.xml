@@ -55,7 +55,12 @@
             app:destination="@id/HomeFragment" />
         <argument
             android:name="level"
-            app:argType="integer" />
+            app:argType="integer"
+            android:defaultValue="-1"/>
+        <argument
+            android:name="category"
+            app:argType="integer"
+            android:defaultValue="-1"/>
     </fragment>
     <fragment
         android:id="@+id/levelsFragment"

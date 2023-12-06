@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.yogaapp.databinding.FragmentLevelsBinding
@@ -25,14 +24,6 @@ class LevelsFragment : Fragment() {
     private val viewModel: YogaViewModel by activityViewModels()
 
     private val binding get() = _binding!!
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        arguments?.let {
-//            columnCount = it.getInt(ARG_COLUMN_COUNT)
-//        }
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,19 +65,4 @@ class LevelsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-//    companion object {
-//
-//        // TODO: Customize parameter argument names
-//        const val ARG_COLUMN_COUNT = "column-count"
-//
-//        // TODO: Customize parameter initialization
-//        @JvmStatic
-//        fun newInstance(columnCount: Int) =
-//            LevelsFragment().apply {
-//                arguments = Bundle().apply {
-//                    putInt(ARG_COLUMN_COUNT, columnCount)
-//                }
-//            }
-//    }
 }

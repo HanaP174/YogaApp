@@ -1,7 +1,6 @@
 package com.example.yogaapp
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.yogaapp.model.*
@@ -10,8 +9,6 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class YogaViewModel (private val repository: Repository) : ViewModel() {
-
-    val selectedCategory = MutableLiveData<Int>()
 
     private var _categories: MutableList<Category> = mutableListOf()
     val categories: List<Category> = _categories

@@ -26,8 +26,10 @@ class CategoriesFragment : Fragment() {
         if (view is RecyclerView) {
             with(view) {
                 adapter = MyCategoryRecyclerViewAdapter(viewModel.categories, this) { categoryId ->
-                    viewModel.selectedCategory.value = categoryId
-                    findNavController().navigate(R.id.action_categoriesFragment_to_posesFragment)
+                    val args = Bundle().apply {
+                        putInt("category", categoryId)
+                    }
+                    findNavController().navigate(R.id.action_categoriesFragment_to_posesFragment, args)
                 }
             }
         }
