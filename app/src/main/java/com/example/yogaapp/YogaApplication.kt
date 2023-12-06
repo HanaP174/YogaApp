@@ -2,6 +2,7 @@ package com.example.yogaapp
 
 import android.app.Application
 import com.example.yogaapp.api.YogaApiService
+import com.example.yogaapp.repository.Repository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

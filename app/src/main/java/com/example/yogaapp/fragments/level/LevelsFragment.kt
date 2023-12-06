@@ -1,4 +1,4 @@
-package com.example.yogaapp
+package com.example.yogaapp.fragments.level
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import com.example.yogaapp.R
+import com.example.yogaapp.viewmodel.YogaViewModel
 import com.example.yogaapp.databinding.FragmentLevelsBinding
 
 /**

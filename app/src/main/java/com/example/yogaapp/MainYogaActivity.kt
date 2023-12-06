@@ -9,6 +9,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import androidx.lifecycle.ViewModelProvider
 import com.example.yogaapp.databinding.MainActivityYogaBinding
+import com.example.yogaapp.viewmodel.YogaViewModel
+import com.example.yogaapp.viewmodel.YogaViewModelFactory
 
 class MainYogaActivity : AppCompatActivity() {
 

@@ -1,9 +1,10 @@
-package com.example.yogaapp
+package com.example.yogaapp.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.yogaapp.model.*
+import com.example.yogaapp.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.random.Random

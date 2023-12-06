@@ -17,7 +17,7 @@
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="center"
         android:background="#FFDBD6"
-        tools:context=".LevelsFragment">
+        tools:context=".fragments.level.LevelsFragment">
 
         <LinearLayout
             android:id="@+id/linearLayout"

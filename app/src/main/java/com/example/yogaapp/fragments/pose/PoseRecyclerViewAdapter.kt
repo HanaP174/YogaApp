@@ -1,4 +1,4 @@
-package com.example.yogaapp
+package com.example.yogaapp.fragments.pose
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -10,10 +10,10 @@ import com.example.yogaapp.databinding.PosesBinding
 import com.example.yogaapp.model.Pose
 import com.example.yogaapp.service.SvgLoaderService
 
-class MyPoseRecyclerViewAdapter(
+class PoseRecyclerViewAdapter(
     private val poses: List<Pose>,
     recyclerView: RecyclerView
-) : RecyclerView.Adapter<MyPoseRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<PoseRecyclerViewAdapter.ViewHolder>() {
 
     private val svgLoaderService = SvgLoaderService(recyclerView.context)
 

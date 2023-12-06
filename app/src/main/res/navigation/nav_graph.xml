@@ -7,8 +7,7 @@
 
     <fragment
         android:id="@+id/HomeFragment"
-        android:name="com.example.yogaapp.HomeFragment"
-        android:label="@string/home_fragment_label"
+        android:name="com.example.yogaapp.fragments.home.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_HomeFragment_to_FlowsFragment"
@@ -25,8 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/FlowsFragment"
-        android:name="com.example.yogaapp.FlowsFragment"
-        android:label="@string/second_fragment_label"
+        android:name="com.example.yogaapp.fragments.flows.FlowsFragment"
         tools:layout="@layout/fragment_flows">
 
         <action
@@ -35,8 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.yogaapp.CategoriesFragment"
-        android:label="fragment_categories_list"
+        android:name="com.example.yogaapp.fragments.category.CategoriesFragment"
         tools:layout="@layout/fragment_categories_list" >
         <action
             android:id="@+id/action_categoriesFragment_to_HomeFragment"
@@ -47,8 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/posesFragment"
-        android:name="com.example.yogaapp.PosesFragment"
-        android:label="fragment_poses_list"
+        android:name="com.example.yogaapp.fragments.pose.PosesFragment"
         tools:layout="@layout/fragment_poses_list" >
         <action
             android:id="@+id/action_posesFragment_to_HomeFragment"
@@ -64,8 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/levelsFragment"
-        android:name="com.example.yogaapp.LevelsFragment"
-        android:label="fragment_levels"
+        android:name="com.example.yogaapp.fragments.level.LevelsFragment"
         tools:layout="@layout/fragment_levels">
         <action
             android:id="@+id/action_levelsFragment_to_HomeFragment"

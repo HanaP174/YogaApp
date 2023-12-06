@@ -1,4 +1,4 @@
-package com.example.yogaapp
+package com.example.yogaapp.repository
 
 import com.example.yogaapp.api.YogaApiService
 import com.example.yogaapp.model.CategoryResponse

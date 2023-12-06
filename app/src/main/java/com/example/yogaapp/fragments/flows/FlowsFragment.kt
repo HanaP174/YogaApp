@@ -1,4 +1,4 @@
-package com.example.yogaapp
+package com.example.yogaapp.fragments.flows
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.yogaapp.R
 import com.example.yogaapp.databinding.FragmentFlowsBinding
 
 /**

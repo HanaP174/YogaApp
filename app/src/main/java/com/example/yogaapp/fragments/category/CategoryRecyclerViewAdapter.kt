@@ -1,4 +1,4 @@
-package com.example.yogaapp
+package com.example.yogaapp.fragments.category
 
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
@@ -10,11 +10,11 @@ import com.example.yogaapp.databinding.CategoriesBinding
 import com.example.yogaapp.model.Category
 import com.example.yogaapp.service.SvgLoaderService
 
-class MyCategoryRecyclerViewAdapter(
+class CategoryRecyclerViewAdapter(
     private val categories: List<Category>,
     recyclerView: RecyclerView,
     val listener: (Int) -> Unit
-) : RecyclerView.Adapter<MyCategoryRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
 
     private val svgLoaderService = SvgLoaderService(recyclerView.context)
 

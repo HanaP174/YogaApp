@@ -8,7 +8,7 @@
     app:layout_anchor="@+id/constraintLayout"
     app:layout_anchorGravity="center"
     android:background="#FFDBD6"
-    tools:context=".HomeFragment">
+    tools:context=".fragments.home.HomeFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"

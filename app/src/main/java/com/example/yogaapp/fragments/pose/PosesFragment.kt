@@ -1,4 +1,4 @@
-package com.example.yogaapp
+package com.example.yogaapp.fragments.pose
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.example.yogaapp.R
+import com.example.yogaapp.viewmodel.YogaViewModel
 import com.example.yogaapp.model.Pose
 
 /**
@@ -29,7 +31,7 @@ class PosesFragment : Fragment() {
         if (view is RecyclerView) {
             with(view) {
                 val poses = getPoses()
-                adapter = MyPoseRecyclerViewAdapter(poses, this)
+                adapter = PoseRecyclerViewAdapter(poses, this)
             }
         }
         return view
