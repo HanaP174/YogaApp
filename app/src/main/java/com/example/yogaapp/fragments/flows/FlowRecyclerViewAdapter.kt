@@ -8,7 +8,7 @@ import com.example.yogaapp.databinding.FlowsBinding
 import com.example.yogaapp.model.Flow
 
 class FlowRecyclerViewAdapter(
-    private val flows: List<Flow>,
+    private val flows: List<Flow>?,
 ) : RecyclerView.Adapter<FlowRecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(binding: FlowsBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -23,13 +23,13 @@ class FlowRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val flow = flows[position]
-        holder.title.text = flow.name
-        holder.duration.text = flow.poses.sumOf { it.time }.toString()
-        holder.numberOfPoses.text = flow.poses.size.toString()
+        val flow = flows?.get(position)
+        holder.title.text = flow?.name
+        holder.duration.text = flow?.poses?.sumOf { it.time }.toString()
+        holder.numberOfPoses.text = flow?.poses?.size.toString()
     }
 
     override fun getItemCount(): Int {
-        return flows.size
+        return flows?.size ?: 0
     }
 }

@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yogaapp.R
+import com.example.yogaapp.model.Flow
 import com.example.yogaapp.viewmodel.YogaViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FlowsFragment : Fragment() {
 
@@ -23,9 +25,29 @@ class FlowsFragment : Fragment() {
 
         if (view.findViewById<RecyclerView>(R.id.list) is RecyclerView) {
             with(view.findViewById<RecyclerView>(R.id.list)) {
-                adapter = FlowRecyclerViewAdapter(viewModel.flows)
+                adapter = FlowRecyclerViewAdapter(viewModel.flows.value)
             }
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<FloatingActionButton>(R.id.addFlowButton).setOnClickListener {
+            val newFlowFragment = AddFlowDialogFragment()
+            newFlowFragment.show(parentFragmentManager, "newFlow")
+        }
+
+        viewModel.flows.observe(viewLifecycleOwner) { newFlows ->
+            updateRecyclerView(newFlows)
+        }
+    }
+
+    private fun updateRecyclerView(newFlows: List<Flow>) {
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.list)
+        recyclerView?.adapter = FlowRecyclerViewAdapter(newFlows)
+        // Notify the adapter that the data set has changed
+        recyclerView?.adapter?.notifyItemInserted(newFlows.size - 1)
     }
 }

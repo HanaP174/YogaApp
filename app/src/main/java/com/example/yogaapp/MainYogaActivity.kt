@@ -29,7 +29,6 @@ class MainYogaActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, YogaViewModelFactory(app.repository))
             .get(YogaViewModel::class.java)
         viewModel.getCategories()
-        viewModel.getPoses()
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)

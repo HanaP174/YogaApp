@@ -49,8 +49,16 @@ data class LevelResponse (
 )
 
 data class Flow (
-    var id: Int,
+    var id: Int = generateUniqueId(),
     var name: String,
     var poses: List<FlowPose>,
     var numberOfPoses: Int = poses.size
-)
+) {
+    companion object {
+        private var nextId = 1
+
+        fun generateUniqueId(): Int {
+            return nextId++
+        }
+    }
+}

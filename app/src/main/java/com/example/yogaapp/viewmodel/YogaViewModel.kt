@@ -1,6 +1,8 @@
 package com.example.yogaapp.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.yogaapp.model.*
@@ -21,7 +23,8 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
     private var _asanasResponseByCategory: List<CategoryResponse> = emptyList()
     private lateinit var _asanasResponseByLevel: LevelResponse
 
-    var flows: MutableList<Flow> = mutableListOf()
+    private val _flows = MutableLiveData<List<Flow>>()
+    val flows: LiveData<List<Flow>> get() = _flows
 
     fun getCategories() {
         if (_asanasResponseByCategory.isEmpty() || _categories.isEmpty()) {
@@ -31,6 +34,7 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
                 if (result is List<CategoryResponse>) {
                     _asanasResponseByCategory = result
                     mapCategories()
+                    mapPoses()
                 }
             }
         }
@@ -44,7 +48,6 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
                 if (result is List<CategoryResponse>) {
                     _asanasResponseByCategory = result
                     mapPoses()
-                    mockFlow()
                 }
             }
         }
@@ -62,9 +65,10 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun mockFlow() {
-        val flowPoses =  poses.subList(0, 2).map{FlowPose(0, 5, it)}
-        flows.add(Flow(1, "After work yoga", flowPoses))
+    fun addFlow(flow: Flow) {
+        val currentFlows = _flows.value.orEmpty().toMutableList()
+        currentFlows.add(flow)
+        _flows.value = currentFlows
     }
 
     private fun mapCategories() {
