@@ -101,5 +101,15 @@
             </RelativeLayout>
 
         </RelativeLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addPose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            app:backgroundTint="#c47ccc"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            app:elevation="6dp"
+            app:srcCompat="@android:drawable/ic_input_add" />
     </androidx.cardview.widget.CardView>
 </LinearLayout>

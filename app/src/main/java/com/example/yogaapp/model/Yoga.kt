@@ -51,7 +51,7 @@ data class LevelResponse (
 data class Flow (
     var id: Int = generateUniqueId(),
     var name: String,
-    var poses: List<FlowPose>,
+    var poses: MutableList<FlowPose>,
     var numberOfPoses: Int = poses.size
 ) {
     companion object {
@@ -60,5 +60,11 @@ data class Flow (
         fun generateUniqueId(): Int {
             return nextId++
         }
+    }
+}
+
+data class FlowSpinnerItem(val flow: Flow) {
+    override fun toString(): String {
+        return flow.name
     }
 }

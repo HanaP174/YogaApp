@@ -12,7 +12,8 @@ import com.example.yogaapp.service.SvgLoaderService
 
 class PoseRecyclerViewAdapter(
     private val poses: List<Pose>,
-    recyclerView: RecyclerView
+    recyclerView: RecyclerView,
+    val addPoseToFlow: (Pose) -> Unit
 ) : RecyclerView.Adapter<PoseRecyclerViewAdapter.ViewHolder>() {
 
     private val svgLoaderService = SvgLoaderService(recyclerView.context)
@@ -22,6 +23,7 @@ class PoseRecyclerViewAdapter(
         val poseDescription: TextView = binding.poseDescriptionText
         val poseBenefit: TextView = binding.poseBenefitText
         val svg: ImageView = binding.poseIcon
+        val addPoseButton = binding.addPose
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,6 +38,10 @@ class PoseRecyclerViewAdapter(
         holder.poseBenefit.text = pose.benefit
 
         svgLoaderService.loadSvgImage(pose.svg, holder.svg)
+
+        holder.addPoseButton.setOnClickListener {
+            addPoseToFlow(pose)
+        }
     }
 
     override fun getItemCount(): Int = poses.size

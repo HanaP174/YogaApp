@@ -31,7 +31,10 @@ class PosesFragment : Fragment() {
         if (view is RecyclerView) {
             with(view) {
                 val poses = getPoses()
-                adapter = PoseRecyclerViewAdapter(poses, this)
+                adapter = PoseRecyclerViewAdapter(poses, this) { pose ->
+                    val addPoseToFlowFragment = AddPoseToFlowDialogFragment(pose)
+                    addPoseToFlowFragment.show(parentFragmentManager, "addPoseToFlow")
+                }
             }
         }
         return view

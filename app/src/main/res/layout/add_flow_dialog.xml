@@ -15,5 +15,6 @@
         android:layout_marginBottom="4dp"
         android:hint="@string/name_of_the_flow"
         android:autofillHints="string"
+        android:textColorHint="@color/hint"
         android:textColor="#403742"/>
 </LinearLayout>

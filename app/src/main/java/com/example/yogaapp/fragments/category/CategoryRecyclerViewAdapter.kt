@@ -1,6 +1,5 @@
 package com.example.yogaapp.fragments.category
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -39,7 +38,6 @@ class CategoryRecyclerViewAdapter(
         svgLoaderService.loadSvgImage(category.svg, holder.imageView)
 
         holder.categoryCard.setOnClickListener {
-            Log.v("category recycler", "listener called")
             listener(category.id)
         }
     }
