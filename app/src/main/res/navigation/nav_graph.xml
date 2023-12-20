@@ -75,7 +75,6 @@
     <fragment
         android:id="@+id/flowToPlayFragment"
         android:name="com.example.yogaapp.fragments.flowtoplay.FlowToPlayFragment"
-        android:label="fragment_flow_to_play_list"
         tools:layout="@layout/fragment_flow_to_play_list" >
         <action
             android:id="@+id/action_flowToPlayFragment_to_FlowsFragment"
