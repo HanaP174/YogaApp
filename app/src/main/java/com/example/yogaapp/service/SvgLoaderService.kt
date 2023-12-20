@@ -11,9 +11,9 @@ import kotlinx.coroutines.*
 import java.io.InputStream
 import java.net.URL
 
-class SvgLoaderService(private val context: Context) {
+class SvgLoaderService(private val context: Context?) {
 
-    fun loadSvgImage(svgUrl: String, imageView: ImageView) {
+    fun loadSvgImage(svgUrl: String, imageView: ImageView?) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
                 val inputStream: InputStream = URL(svgUrl).openStream()
@@ -22,11 +22,13 @@ class SvgLoaderService(private val context: Context) {
 
                 val pictureDrawable = PictureDrawable(svg.renderToPicture())
 
-                withContext(Dispatchers.Main) {
-                    Glide.with(context)
-                        .load(pictureDrawable)
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .into(imageView)
+                if (context != null && imageView != null) {
+                    withContext(Dispatchers.Main) {
+                        Glide.with(context)
+                            .load(pictureDrawable)
+                            .transition(DrawableTransitionOptions.withCrossFade())
+                            .into(imageView)
+                    }
                 }
 
             } catch (e: SVGParseException) {
