@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.example.yogaapp.databinding.PosesBinding
-import com.example.yogaapp.model.Pose
+import com.example.yogaapp.domain.Pose
 import com.example.yogaapp.service.SvgLoaderService
 
 class PoseRecyclerViewAdapter(

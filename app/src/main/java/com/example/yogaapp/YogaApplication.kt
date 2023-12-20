@@ -2,6 +2,7 @@ package com.example.yogaapp
 
 import android.app.Application
 import com.example.yogaapp.api.YogaApiService
+import com.example.yogaapp.database.getDatabase
 import com.example.yogaapp.repository.Repository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -30,7 +31,7 @@ class YogaApplication : Application() {
     }
 
     val repository: Repository by lazy {
-        Repository(apiService)
+        Repository(apiService, getDatabase(this))
     }
 
     override fun onCreate() {

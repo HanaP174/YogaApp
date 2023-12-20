@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.yogaapp.R
 import com.example.yogaapp.viewmodel.YogaViewModel
-import com.example.yogaapp.model.Pose
+import com.example.yogaapp.domain.Pose
 
 /**
  * A fragment representing a list of Items.

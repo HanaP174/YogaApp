@@ -11,10 +11,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.yogaapp.R
-import com.example.yogaapp.model.Flow
-import com.example.yogaapp.model.FlowPose
-import com.example.yogaapp.model.FlowSpinnerItem
-import com.example.yogaapp.model.Pose
+import com.example.yogaapp.domain.Flow
+import com.example.yogaapp.domain.FlowPose
+import com.example.yogaapp.domain.FlowSpinnerItem
+import com.example.yogaapp.domain.Pose
 import com.example.yogaapp.viewmodel.YogaViewModel
 
 class AddPoseToFlowDialogFragment(private val pose: Pose) : DialogFragment() {
@@ -82,12 +82,12 @@ class AddPoseToFlowDialogFragment(private val pose: Pose) : DialogFragment() {
     }
 
     private fun createFlow(name: String, duration: Int) {
-        val flow = Flow(name = name, poses = mutableListOf(createFlowPose(duration)))
-        viewModel.addFlow(flow)
+        val poses = mutableListOf(createFlowPose(duration))
+        viewModel.addFlow(name, poses)
     }
 
     private fun createFlowPose(duration: Int): FlowPose {
-        return FlowPose(0, duration, pose)
+        return FlowPose(duration, pose)
     }
 
     private fun getSelectedFlow(spinner: Spinner, flows: List<Flow>) {
@@ -104,6 +104,6 @@ class AddPoseToFlowDialogFragment(private val pose: Pose) : DialogFragment() {
 
     private fun addPoseToFlow(flow: Flow, duration: Int) {
         val flowPose = createFlowPose(duration)
-        viewModel.flows.value?.find { it.id == flow.id }?.poses?.add(flowPose)
+        viewModel.addPoseToFlow(flow.id, flowPose)
     }
 }

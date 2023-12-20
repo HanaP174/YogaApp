@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yogaapp.R
-import com.example.yogaapp.model.Flow
+import com.example.yogaapp.domain.Flow
 import com.example.yogaapp.viewmodel.YogaViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 

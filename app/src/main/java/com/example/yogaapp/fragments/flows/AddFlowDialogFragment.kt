@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.yogaapp.R
-import com.example.yogaapp.model.Flow
 import com.example.yogaapp.viewmodel.YogaViewModel
 
 class AddFlowDialogFragment : DialogFragment() {
@@ -37,7 +36,6 @@ class AddFlowDialogFragment : DialogFragment() {
     }
 
     private fun createFlow(name: String) {
-        val flow = Flow(name = name, poses = mutableListOf())
-        viewModel.addFlow(flow)
+        viewModel.addFlow(name, mutableListOf())
     }
 }

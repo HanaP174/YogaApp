@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.yogaapp.R
-import com.example.yogaapp.model.FlowPose
+import com.example.yogaapp.domain.FlowPose
 import com.example.yogaapp.viewmodel.YogaViewModel
 
 /**

@@ -5,6 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.yogaapp.domain.Flow
+import com.example.yogaapp.domain.FlowPose
+import com.example.yogaapp.domain.Pose
+import com.example.yogaapp.domain.mapToDatabase
 import com.example.yogaapp.model.*
 import com.example.yogaapp.repository.Repository
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +29,10 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
 
     private val _flows = MutableLiveData<List<Flow>>()
     val flows: LiveData<List<Flow>> get() = _flows
+
+    init {
+        loadFlows()
+    }
 
     fun getCategories() {
         if (_asanasResponseByCategory.isEmpty() || _categories.isEmpty()) {
@@ -65,10 +73,28 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun addFlow(flow: Flow) {
+    fun addFlow(name: String, poses: MutableList<FlowPose>) {
         val currentFlows = _flows.value.orEmpty().toMutableList()
-        currentFlows.add(flow)
-        _flows.value = currentFlows
+        val flow = Flow(name = name, poses = poses, id = 0)
+        viewModelScope.launch {
+            val id = repository.addFlowToDb(flow.mapToDatabase())
+            flow.id = id
+            currentFlows.add(flow)
+            _flows.value = currentFlows
+        }
+    }
+
+    fun addPoseToFlow(flowId: Int, flowPose: FlowPose) {
+        viewModelScope.launch {
+            repository.addFlowPoseToFlowDb(flowId, flowPose.mapToDatabase())
+            _flows.value?.find { it.id == flowId }?.poses?.add(flowPose)
+        }
+    }
+
+    private fun loadFlows() {
+        viewModelScope.launch {
+            _flows.value = repository.getFlowsFromDb()
+        }
     }
 
     private fun mapCategories() {

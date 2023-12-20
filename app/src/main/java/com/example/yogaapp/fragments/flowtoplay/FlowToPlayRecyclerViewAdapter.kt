@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.yogaapp.databinding.FlowToPlayBinding
-import com.example.yogaapp.model.FlowPose
+import com.example.yogaapp.domain.FlowPose
 
 import com.example.yogaapp.service.SvgLoaderService
 

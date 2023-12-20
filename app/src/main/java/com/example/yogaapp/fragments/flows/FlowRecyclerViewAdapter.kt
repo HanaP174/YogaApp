@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yogaapp.databinding.FlowsBinding
-import com.example.yogaapp.model.Flow
+import com.example.yogaapp.domain.Flow
 
 class FlowRecyclerViewAdapter(
     private val flows: List<Flow>?,
