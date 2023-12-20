@@ -20,7 +20,7 @@ data class Pose (
 
 data class FlowPose (
     var order: Int,
-    var time: Int,
+    var duration: Int,
     var pose: Pose
 )
 

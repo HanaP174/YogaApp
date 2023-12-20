@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="#FFF9D4"
+        android:clickable="true"
+        app:cardCornerRadius="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFEFD6"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/poseName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                tools:textStyle="bold"
+                android:textColor="#403742"/>
+
+            <ImageView
+                android:id="@+id/poseIcon"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/category_image"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/poseIcon"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/poseDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/duration"
+                    android:textSize="20sp"
+                    android:textColor="#403742"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/poseDurationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/poseDuration"
+                    android:layout_alignBaseline="@+id/poseDuration"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="0dp"
+                    android:textColor="#403742"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/poseDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:text="@string/description"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/poseDurationText"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#403742"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/poseDescriptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/poseDescription"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:textColor="#403742"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    tools:textStyle="bold" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

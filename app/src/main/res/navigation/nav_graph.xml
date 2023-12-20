@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_FlowsFragment_to_flowToPlayFragment"
+            app:destination="@id/flowToPlayFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
@@ -68,5 +71,18 @@
         <action
             android:id="@+id/action_levelsFragment_to_posesFragment"
             app:destination="@id/posesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flowToPlayFragment"
+        android:name="com.example.yogaapp.fragments.flowtoplay.FlowToPlayFragment"
+        android:label="fragment_flow_to_play_list"
+        tools:layout="@layout/fragment_flow_to_play_list" >
+        <action
+            android:id="@+id/action_flowToPlayFragment_to_FlowsFragment"
+            app:destination="@id/FlowsFragment" />
+        <argument
+            android:name="flowId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

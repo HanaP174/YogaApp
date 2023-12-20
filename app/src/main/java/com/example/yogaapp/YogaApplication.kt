@@ -16,8 +16,8 @@ class YogaApplication : Application() {
 
         val client = OkHttpClient.Builder()
             .addInterceptor(interceptor)
-            .connectTimeout(100, TimeUnit.SECONDS) // Adjust the connect timeout
-            .readTimeout(30, TimeUnit.SECONDS)    // Adjust the read timeout
+            .connectTimeout(100, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .build()
 

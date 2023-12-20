@@ -9,12 +9,14 @@ import com.example.yogaapp.model.Flow
 
 class FlowRecyclerViewAdapter(
     private val flows: List<Flow>?,
+    val playFlow: (Int?) -> Unit
 ) : RecyclerView.Adapter<FlowRecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(binding: FlowsBinding) : RecyclerView.ViewHolder(binding.root) {
         val title: TextView = binding.flowName
         val duration: TextView = binding.duration
         val numberOfPoses: TextView = binding.numberOfPoses
+        val playButton = binding.playButton
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,8 +27,12 @@ class FlowRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val flow = flows?.get(position)
         holder.title.text = flow?.name
-        holder.duration.text = flow?.poses?.sumOf { it.time }.toString()
+        holder.duration.text = flow?.poses?.sumOf { it.duration }.toString()
         holder.numberOfPoses.text = flow?.poses?.size.toString()
+
+        holder.playButton.setOnClickListener {
+            playFlow(flow?.id)
+        }
     }
 
     override fun getItemCount(): Int {

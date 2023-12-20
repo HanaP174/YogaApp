@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yogaapp.R
 import com.example.yogaapp.model.Flow
@@ -25,7 +26,9 @@ class FlowsFragment : Fragment() {
 
         if (view.findViewById<RecyclerView>(R.id.list) is RecyclerView) {
             with(view.findViewById<RecyclerView>(R.id.list)) {
-                adapter = FlowRecyclerViewAdapter(viewModel.flows.value)
+                adapter = FlowRecyclerViewAdapter(viewModel.flows.value) { flowId ->
+                    navigateToPlayFlow(flowId)
+                }
             }
         }
         return view
@@ -46,8 +49,18 @@ class FlowsFragment : Fragment() {
 
     private fun updateRecyclerView(newFlows: List<Flow>) {
         val recyclerView = view?.findViewById<RecyclerView>(R.id.list)
-        recyclerView?.adapter = FlowRecyclerViewAdapter(newFlows)
-        // Notify the adapter that the data set has changed
+        recyclerView?.adapter = FlowRecyclerViewAdapter(newFlows) { flowId ->
+            navigateToPlayFlow(flowId)
+        }
         recyclerView?.adapter?.notifyItemInserted(newFlows.size - 1)
+    }
+
+    private fun navigateToPlayFlow(flowId: Int?) {
+        if (flowId != null) {
+            val args = Bundle().apply {
+                putInt("flowId", flowId)
+            }
+            findNavController().navigate(R.id.action_FlowsFragment_to_flowToPlayFragment, args)
+        }
     }
 }
