@@ -7,23 +7,6 @@ data class Category (
     val svg: String
 )
 
-data class Pose (
-    val id: Int,
-    val categoryId: Int,
-    var levelId: Int,
-    val englishName: String,
-    val originalName: String,
-    val description: String,
-    val benefit: String,
-    val svg: String
-)
-
-data class FlowPose (
-    var order: Int,
-    var duration: Int,
-    var pose: Pose
-)
-
 data class CategoryResponse (
     val id: Int,
     val category_name: String,
@@ -47,24 +30,3 @@ data class LevelResponse (
     val difficulty_level: String,
     val poses: List<PoseResponse>
 )
-
-data class Flow (
-    var id: Int = generateUniqueId(),
-    var name: String,
-    var poses: MutableList<FlowPose>,
-    var numberOfPoses: Int = poses.size
-) {
-    companion object {
-        private var nextId = 1
-
-        fun generateUniqueId(): Int {
-            return nextId++
-        }
-    }
-}
-
-data class FlowSpinnerItem(val flow: Flow) {
-    override fun toString(): String {
-        return flow.name
-    }
-}
