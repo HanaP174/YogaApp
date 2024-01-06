@@ -12,12 +12,12 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/butterfly"
         android:supportsRtl="true"
-        android:theme="@style/Theme.YogaApp"
+        android:theme="@style/Theme.YogaApp.Starting"
         tools:targetApi="31">
         <activity
             android:name=".MainYogaActivity"
             android:exported="true"
-            android:theme="@style/Theme.YogaApp.NoActionBar">
+            android:theme="@style/Theme.YogaApp.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

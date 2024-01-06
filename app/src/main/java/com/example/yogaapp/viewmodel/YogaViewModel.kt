@@ -19,6 +19,7 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
 
     private var _categories: MutableList<Category> = mutableListOf()
     val categories: List<Category> = _categories
+    var categoriesLoading = true
 
     private var _poses: MutableList<Pose> = mutableListOf()
     val poses: List<Pose> = _poses
@@ -32,6 +33,7 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
 
     init {
         loadFlows()
+        getCategories()
     }
 
     fun getCategories() {
@@ -43,6 +45,7 @@ class YogaViewModel (private val repository: Repository) : ViewModel() {
                     _asanasResponseByCategory = result
                     mapCategories()
                     mapPoses()
+                    categoriesLoading = false
                 }
             }
         }

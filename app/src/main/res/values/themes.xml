@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.YogaApp.NoActionBar">
+    <style name="Theme.YogaApp.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -22,4 +22,10 @@
     <style name="Theme.YogaApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.YogaApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.YogaApp.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#FFDBD6</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/butterfly_splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.YogaApp.NoActionBar</item>
+    </style>
 </resources>
